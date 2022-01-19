@@ -46,4 +46,24 @@
 .tableElements {
     color: white;
 }
+.spaceDiv {
+    overflow-x: scroll;
+}
+.statsTable {
+    text-align: center;
+    align-items: center;
+    width: auto;
+    height:80px;
+    display:block;
+}
+.table,.tableHeaders2,.tableElements2 {
+    border: 1px solid white;
+}
+.tableHeaders2 {
+    color: red;
+}
+.tableElements2 {
+    color: white;
+}
+
 

@@ -1,0 +1,49 @@
+.nbaHeader {
+    text-align: center;
+    color: aliceblue;
+}
+
+.searchBar {
+    float: left;
+}
+.searchBar button {
+    border-radius: 5px;
+    padding: 10px;
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    outline: none;
+    transition-duration: 0.5s;
+}
+
+.searchBar button:hover {
+    background-color: #233554;
+    color: white;
+}
+
+.searchBar input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+}
+
+.nbaBody {
+    background-color: rgb(6, 63, 110);
+}
+
+.nbaTable {
+    text-align: center;
+    align-items: center;
+    width: 100%;
+}
+.table,th,td {
+    border: 1px solid white;
+}
+.tableHeaders {
+    color: red;
+}
+.tableElements {
+    color: white;
+}
+

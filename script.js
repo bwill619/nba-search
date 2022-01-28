@@ -1,19 +1,32 @@
-const baseURL = "https://balldontlie.io/api/v1/";
-var FGA = document.getElementById("FGA").innerHTML = "123";
-var url1 = "https://balldontlie.io/api/v1/players?search=doncic";
+const apiCall = "https://balldontlie.io/api/v1/players?search=doncic";
 
 function searchPlayer(query) {
-    const url = ``;
-    fetch(url1)
-    .then((response) => {
-        console.log("we got a resposne");
-        console.log(response);
-        return response.json;
-    })
+    const url = `https://balldontlie.io/api/v1/players?search=${query}`;
+    fetch(url)
+    .then(response => response.json())
     .then((jsonData) => {
-        console.log('we got the data');
-        console.log(jsonData);
+        const array = [jsonData];
+        const fName = array.map(player => `${player.data[0].first_name}`);
+        const lName = array.map(player => `${player.data[0].last_name}`);
+        const height = array.map(player => `${player.data[0].height_feet}` + "'" + `${player.data[0].height_inches}`);
+        const weight = array.map(player => `${player.data[0].weight_pounds}`);
+        const team = array.map(player => `${player.data[0].team.full_name}`);
+        const position = array.map(player => `${player.data[0].position}`);
+        document.getElementById("firstName").innerHTML = fName;
+        document.getElementById("lastName").innerHTML = lName;
+        document.getElementById("height").innerHTML = height;
+        document.getElementById("weight").innerHTML = weight;
+        document.getElementById("team").innerHTML = team;
+        document.getElementById("position").innerHTML = position;
+
     });
+}
+
+window.onload = () => {
+    const searchElement = document.getElementById("searchField");
+    searchElement.onkeyup = (event) => {
+        searchPlayer(searchElement.value);
+    }
 }
 
 

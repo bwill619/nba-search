@@ -6,20 +6,6 @@
 .searchBar {
     float: left;
 }
-.searchBar button {
-    border-radius: 5px;
-    padding: 10px;
-    background-color: transparent;
-    color: white;
-    border: 1px solid white;
-    outline: none;
-    transition-duration: 0.5s;
-}
-
-.searchBar button:hover {
-    background-color: #233554;
-    color: white;
-}
 
 .searchBar input[type=text] {
     padding: 6px;

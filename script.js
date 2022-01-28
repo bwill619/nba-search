@@ -1,7 +1,7 @@
 const apiCall = "https://balldontlie.io/api/v1/players?search=doncic";
 
-function searchPlayer(query) {
-    const url = `https://balldontlie.io/api/v1/players?search=${query}`;
+function searchPlayer(input) {
+    const url = `https://balldontlie.io/api/v1/players?search=${input}`;
     fetch(url)
     .then(response => response.json())
     .then((jsonData) => {

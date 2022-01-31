@@ -20,7 +20,11 @@ function searchPlayer(input) {
         document.getElementById("team").innerHTML = team;
         document.getElementById("position").innerHTML = position;
 
-    });
+    })
+    .catch(error => {
+        console.log("error", error);
+    })
+    ;
 }
 
 window.onload = () => {

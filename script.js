@@ -1,5 +1,5 @@
-const apiCall = "https://balldontlie.io/api/v1/players?search=doncic";
-const apiAverages = "https://balldontlie.io/api/v1/season_averages?season=2020&player_ids[]=237";
+const playerurl = "https://balldontlie.io/api/v1/players?search=";
+const statsurl = "https://balldontlie.io/api/v1/season_averages?season=2020&player_ids[]=";
 
 function searchPlayer(input) {
     const url = `https://balldontlie.io/api/v1/players?search=${input}`;
@@ -33,6 +33,22 @@ window.onload = () => {
         searchPlayer(searchElement.value);
     }
 }
+
+
+axios.get(playerurl).then(playerData => {
+    const statsPromises = playerData.data.data.map(function(player) { // Use Array.map to create promises
+      return axios.get(statsurl + player.id).then(function(result) {
+        return new Promise(function(resolve) { // Chain promises
+          player.stats = result.data.data;
+          resolve(player); // Finally resolve the player and stats
+        });
+      });
+    });
+  
+    Promise.all(statsPromises).then(function(playerStats) {
+      console.log(JSON.stringify(playerStats));
+    });
+  });
 
 
 

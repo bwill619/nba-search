@@ -35,20 +35,7 @@ window.onload = () => {
 }
 
 
-axios.get(playerurl).then(playerData => {
-    const statsPromises = playerData.data.data.map(function(player) { // Use Array.map to create promises
-      return axios.get(statsurl + player.id).then(function(result) {
-        return new Promise(function(resolve) { // Chain promises
-          player.stats = result.data.data;
-          resolve(player); // Finally resolve the player and stats
-        });
-      });
-    });
-  
-    Promise.all(statsPromises).then(function(playerStats) {
-      console.log(JSON.stringify(playerStats));
-    });
-  });
+
 
 
 

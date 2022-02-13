@@ -27,12 +27,42 @@ function searchPlayer(input) {
     ;
 }
 
+async function getPlayerId() {
+    const url = `https://balldontlie.io/api/v1/players?search=${input}`;
+    fetch(url)
+    .then(response => response.json())
+    .then((jsonData) => {
+        const array = [jsonData];
+        const id = array.map(player => `${player.data[0].id}`);
+        this.getPlayerStats(id);
+    })
+    .catch(error => {
+        console.log("error", error);
+    })
+    ;
+}
+
+async function getPlayerStats(playerID) {
+   const url = `https://balldontlie.io/api/v1/season_averages?season=2021&player_ids[]=${playerID}`;
+   fetch(url)
+   .then(response => response.json())
+   .then((jsonData) => {
+       const array = [jsonData];
+       const ppg = array.map(playerStats => `${playerStats.data[0].pts}`);
+       document.getElementById("PTS").innerHTML = ppg;
+   })
+   .catch(error => {
+       console.log("error",error);
+   })
+}
+
 window.onload = () => {
     const searchElement = document.getElementById("searchField");
     searchElement.onkeyup = (event) => {
         searchPlayer(searchElement.value);
     }
 }
+
 
 
 

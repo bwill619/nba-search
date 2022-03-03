@@ -1,5 +1,6 @@
 const playerurl = "https://balldontlie.io/api/v1/players?search=";
 const statsurl = "https://balldontlie.io/api/v1/season_averages?season=2020&player_ids[]=";
+const playerurl2 = "https://balldontlie.io/api/v1/players/${getPlayerID}";
 
 function searchPlayer(input) {
     const url = `https://balldontlie.io/api/v1/players?search=${input}`;
@@ -27,7 +28,7 @@ function searchPlayer(input) {
     ;
 }
 
-async function getPlayerId(player) {
+async function getPlayerID(player) {
     const url = `https://balldontlie.io/api/v1/players?search=${player}`;
     fetch(url)
     .then(response => response.json())

@@ -27,14 +27,15 @@ function searchPlayer(input) {
     ;
 }
 
-async function getPlayerId() {
-    const url = `https://balldontlie.io/api/v1/players?search=${input}`;
+async function getPlayerId(player) {
+    const url = `https://balldontlie.io/api/v1/players?search=${player}`;
     fetch(url)
     .then(response => response.json())
     .then((jsonData) => {
         const array = [jsonData];
         const id = array.map(player => `${player.data[0].id}`);
-        this.getPlayerStats(id);
+        const id2 = console.log(id);
+        return id2;
     })
     .catch(error => {
         console.log("error", error);
